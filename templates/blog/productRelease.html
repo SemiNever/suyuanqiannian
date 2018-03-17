@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品发布</title>
+	<link rel="stylesheet" href="bscss/productRelease.css">
+	<script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+</head>
+<body>
+	<nav>
+		<img id='nav-logo' src="nav/logo.png" alt="">
+		<a class='navs nav1' href="summarize.html">网站概述</a>
+		<a class='navs nav2' href="articleRelease.html">文章发布</a>
+		<a class='navs nav3' href="productRelease.html">商品发布</a>
+		<a class='navs nav4' href="">反馈管理</a>
+		<img id='user-img' src="nav/管理员.png" alt="">
+		<span id='username'>guanli-01</span>
+		<a id='exit' href="login.html">退出</a>
+		<div class='underline'></div>
+	</nav>
+	<main>
+		<div class='main0'>
+		<div class='underline1'></div>
+		商品发布
+		</div>
+		<form action="">
+			<div class='main1'>
+				<span class="main1H">商品信息</span>
+				<input id='headline' type="text" placeholder="商品标题"><em class='em1'>10</em><b class="b1">必填！</b>
+				<input id='size' type="text" placeholder="商品规格">
+				<em class='em2'>30</em><b class="b2">必填！</b>
+				<input id='description' type="text" placeholder="商品一句话描述">
+				<em class='em3'>16</em><b class="b3">必填！</b>
+				<select name="" id="">
+					<option disabled="disabled" selected="selected">选择商品类型</option>
+					<option selected='selected' value="全部">全部</option>
+					<option value="礼品">礼品</option>
+					<option value="文具">文具</option>
+					<option value="服饰">服饰</option>
+					<option value="其他">其他</option>
+				</select>
+				<input id='price' type="text" placeholder="商品价格">
+				<b class="b4">必填！</b>
+			</div>
+			<div class='main2'>
+				<span class="main2H">上传商品照片</span>
+				<label class='label1' for="upload-img1">
+					<div class='plus'>+</div>
+					<input type="file" class='uploadImg' id='upload-img1'>
+					<p class='label1p'>上传第一张商品图片</p>
+					<p class='label1p'>430*600px</p>
+					<p class="imgchange-tip label1Tip">修改图片</p>
+				</label>
+				<label class='label2' for="upload-img2">
+					<div class='plus'>+</div>
+					<input type="file" class='uploadImg' id='upload-img2'>
+					<p class='label2p'>上传第一张商品图片</p>
+					<p class='label2p'>430*600px</p>
+					<p class="imgchange-tip label2Tip">修改图片</p>
+				</label>
+				<label class='label3' for="upload-img3">
+					<div class='plus'>+</div>
+					<input type="file" class='uploadImg' id='upload-img3'>
+					<p class='label3p'>上传第一张商品图片</p>
+					<p class='label3p'>430*600px</p>
+					<p class="imgchange-tip label3Tip">修改图片</p>
+				</label>
+				<b class="b5">必填！</b>
+			</div>
+
+			<div class='main3'>
+				<span class="main3H">编辑商品说明</span>
+				<textarea name="" id="" cols="30" rows="10">	
+				</textarea>
+				<b class="b6">必填！</b>
+			</div>
+
+			<div class='main4'>
+				<span class="main4H">上传商品封面</span>
+				<label class='label4' for="upload-img4">
+					<div class='plus'>+</div>
+					<input type="file" class='uploadImg' id='upload-img4'>
+					<p class='label4p'>上传商品封面</p>
+					<p class='label4p'>305*350px</p>
+					<p class="imgchange-tip label4Tip">修改图片</p>
+				</label>
+				<b class="b7">必填！</b>
+			</div>
+			<span class="footerTip">未点击发布直接退出信息将不会保存</span>
+			<input class='publishBtn' type="submit" value="发布">
+		</form>
+	</main>
+	<script src='js/jquery-3.1.1.js'></script>
+	<script src='bsjs/productRelease.js'></script>
+</body>
+</html>

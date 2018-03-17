@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据概述</title>
+	<link rel="stylesheet" href="bscss/summarize.css">
+	<script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+</head>
+<body>
+	<nav>
+		<img id='nav-logo' src="nav/logo.png" alt="">
+		<a class='navs nav1' href="summarize.html">网站概述</a>
+		<a class='navs nav2' href="articleRelease.html">文章发布</a>
+		<a class='navs nav3' href="productRelease.html">商品发布</a>
+		<a class='navs nav4' href="">反馈管理</a>
+		<img id='user-img' src="nav/管理员.png" alt="">
+		<span id='username'>guanli-01</span>
+		<a id='exit' href="login.html">退出</a>
+		<div class='underline'></div>
+	</nav>
+	<div class='main1'>
+		<div class='underline1'></div>
+		数据概述
+	</div>
+	<div class='main2'>
+		<div class='box box1'>
+			<p class='boxNum'>3000</p>
+			<p class='boxName'>今日浏览量</p>
+		</div>
+		<div class='box box2'>
+			<p class='boxNum'>12590</p>
+			<p class='boxName'>累计浏览量</p>
+		</div>
+		<div class='box box2'>
+			<p class='boxNum'>120</p>
+			<p class='boxName'>文章总数</p>
+		</div>
+		<div class='box box2'>
+			<p class='boxNum'>120</p>
+			<p class='boxName'>商品总数</p>
+		</div>
+		<div class='box box2'>
+			<p class='boxNum'>25000</p>
+			<p class='boxName'>点赞总数</p>
+		</div>
+	</div>
+	<div class='main3'>
+		<div class='underline1'></div>
+		文章列表
+	</div>
+	<div class="main4">
+		<div class='main4Header'>
+			<span class='main4Header1'>序号</span>
+			<span class='main4Header2'>文章名</span>
+			<span class='main4Header3'>类别</span>
+			<span class='main4Header4'>点赞数</span>
+			<span class='main4Header5'>上传人员</span>
+			<span class='main4Header6'>最后修改时间</span>
+			<span class='main4Header7'>操作</span>
+		</div>
+		<div class="main4Content">
+			<span class='number1'>1</span>
+			<span class='name1'>溯源千年 中国文字的前世今生</span>
+			<span class='type1'>名家约稿</span>
+			<span class='like1'>320</span>
+			<span class='adminName1'>guanli-02</span>
+			<span class='time1'>2017/12/25/15:00</span>
+			<a class='preview' href="">预览</a>
+			<a class='change' href="">修改</a>
+			<a class='delete' href="#">删除</a>
+		</div>
+		<div class="main4Content">
+			<span class='number1'>2</span>
+			<span class='name1'>溯源千年 中国文字的前世今生</span>
+			<span class='type1'>名家约稿</span>
+			<span class='like1'>320</span>
+			<span class='adminName1'>guanli-02</span>
+			<span class='time1'>2017/12/25/15:00</span>
+			<a class='preview' href="">预览</a>
+			<a class='change' href="">修改</a>
+			<a class='delete' href="#">删除</a>
+		</div>
+	</div>
+	<div class='main5'>
+		<div class='underline1'></div>
+		商品列表
+	</div>
+	<div class="main6">
+		<div class='main6Header'>
+			<span class='main4Header1'>序号</span>
+			<span class='main4Header2'>商品名</span>
+			<span class='main4Header3'>类别</span>
+			<span class='main4Header4'>点赞数</span>
+			<span class='main4Header5'>上传人员</span>
+			<span class='main4Header6'>最后修改时间</span>
+			<span class='main4Header7'>操作</span>
+		</div>
+		<div class="main6Content">
+			<span class='number1'>1</span>
+			<span class='name1'>溯源千年 中国文字的前世今生</span>
+			<span class='type1'>名家约稿</span>
+			<span class='like1'>320</span>
+			<span class='adminName1'>guanli-02</span>
+			<span class='time1'>2017/12/25/15:00</span>
+			<a class='preview' href="">预览</a>
+			<a class='change' href="">修改</a>
+			<a class='delete' href="#">删除</a>
+		</div>
+		<div class="main6Content">
+			<span class='number1'>2</span>
+			<span class='name1'>溯源千年 中国文字的前世今生</span>
+			<span class='type1'>名家约稿</span>
+			<span class='like1'>320</span>
+			<span class='adminName1'>guanli-02</span>
+			<span class='time1'>2017/12/25/15:00</span>
+			<a class='preview' href="">预览</a>
+			<a class='change' href="">修改</a>
+			<a class='delete' href="#">删除</a>
+		</div>
+	</div>
+	<script src='js/jquery-3.1.1.js'></script>
+	<script src='bsjs/summarize.js'></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>溯源游戏</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/game.css' %}">
+	 <script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+</head>
+<body>
+	<nav>
+		<img id='head-logo' src="{% static 'blog/nav/logo.png' %}" alt="logo">
+		<a id='shop' href="{%url 'shop'%}">溯源商城</a>
+		<a id='book' href="{%url 'book'%}">溯年书斋</a>
+		<a id='game' href="{%url 'game'%}">溯源游戏</a>
+		<a id='about' href="{%url 'about'%}">关于我们</a>
+		<div id='head-underline' class='underline'></div>
+		<img id='head-img1' src="{% static 'blog/nav/icon-gongzhonghao.png' %}" alt="">
+		<img id='head-img2' src="{% static 'blog/nav/icon-gamedownload.png' %}" alt="">
+		<div id="head-code1" >
+			<img src="{% static 'blog/nav/公众号二维码.png' %}" alt="">
+			<span>扫码关注公众号</span>
+		</div>
+		<div id="head-code2">
+			<img src="{% static 'blog/nav/游戏下载二维码.png' %}" alt="">
+			<span>扫码下载游戏</span>
+		</div>
+	</nav>
+	<main>
+		<div id='main1'>
+			<img src="{% static 'blog/gameImg/溯源千年。.png' %}" alt="">
+			<p id='main1-p1'>v1.0安卓版本正式上线</p>
+			<p id='main1-p2'>文字娱教手游</p>
+			<div class='underline1'></div>
+			<a href="https://www.pgyer.com/ZBLG"><button class='main1Btn'>游戏下载</button></a>
+			<button id='main1-btn' class='main1Btn'>游戏反馈</button>
+			<video src="{% static 'blog/gameImg/溯源千年.webm' %}" controls="controls">
+		</div>
+		<div id='main2'>
+			<img  class='mainHeadline' src="{% static 'blog/gameImg/游戏简介.png' %}" alt="">
+			<div class='underline'></div>
+			<div id='main2-p'><p>溯源千年，回到中华文化的起点，跟着历史的脉络，探寻文明的斑驳记忆.</p>
+			<p>
+从结绳记事到仓颉造字，从秦汉风骨到盛唐气象，历史如画卷徐徐展开。</p>
+			<p>跟随主角参与这场冒险吧，历经24个关卡，以汉字为舟，体会不同境遇下的传统文化之美。</p></div>
+			
+		</div>
+		<div id='main3'>
+			<img class='mainHeadline' src="{% static 'blog/gameImg/游戏截图2.png' %}" alt="">
+			<div class='underline'></div>
+			<img id='game-screenshots' src="{% static 'blog/gameImg/游戏截图.png' %}" alt="">
+		</div>
+		<div id='main4'>
+			<img class='mainHeadline' src="{% static 'blog/gameImg/游戏玩法.png' %}" alt="">
+			<div class='underline'></div>
+			<div id="main4Left">
+				<img src="{% static 'blog/gameImg/logo-g1.png' %}" alt="">
+				<p class='main4Headline'>关卡1:徐福东渡</p>
+				<p>海上有三神山，名曰蓬莱，方丈，瀛洲，仙人居之。</p>
+				<p>请得斋戒，
+与童男女求之</p>
+				<p>
+于是谴徐福发童男女数千人，入海求仙人。</p>
+				<p>3分钟内帮助徐福完成拼图得到逃出升天之道即获胜。</p>
+				<p>完成两个
+拼图即视为胜利，一个拼图300分，</p>
+				<p>
+尽量获得更高的分数吧！</p>
+			</div>
+			<div id="main4Right">
+				<img src="{% static 'blog/gameImg/logo-g2.png' %}" alt="">
+				<p class='main4Headline'>关卡2:后庭花</p>
+				<p>公元976年， 李煜被俘</p>
+				<p>
+太平兴国三年，七夕，
+后主院中踽踽独行，苦闷异常</p>
+				<p>分钟内对上李煜的
+诗词上句纾解李煜内心苦闷即获胜。</p>
+				<p>
+完成四个诗词即为胜利，一个诗词150分，</p>
+				<p>
+尽量获得更高的分数吧！
+</p>
+			</div>
+			
+		</div>
+		<div id='mask'></div>
+		<div id='feedback-form'>
+			<form action="/feedback/" method="post" >
+                {% csrf_token %}
+			<div id='close'>X</div>
+			<h3>提交反馈</h3>
+			<span class='required'>必填</span>
+			<textarea name="content" id="feedback-content" placeholder="告诉我们您遇到的问题或者建议"></textarea>
+			<span class='feedbackType'>反馈类型</span>
+			<label for="feedback-radio1">网站反馈&nbsp;&nbsp;<input value="0" name='feedback-radio' id='feedback-radio1' type="radio" ></label>
+			<label for="feedback-radio2" >游戏反馈&nbsp;&nbsp;<input value="1" id='feedback-radio2' name='feedback-radio' type="radio" checked></label>
+			<span class='optional'>选填</span>
+			<input type="text" name="name" placeholder="称呼" id='feedback-name'>
+			<input type="text" name="contact" placeholder="邮箱" id='feedback-email'>
+			<input type="submit" id='feedback-submit' value="提交">
+			</form>
+		</div>
+	</main>
+	<aside>
+		<div id='feedback'>反馈</div>
+		<div id='backup'></div>
+	</aside>
+	<footer>
+		<div id='footer1'>
+			<p id='footer10'>联系我们</p>
+			<div id='footer11'>中国矿业大学建筑与设计学院整合创新工作室</div>
+			<div id='footer12'>409460109@qq.com</div>
+			<div id='footer13'>18361226228</div>
+		</div>
+		<div id='footer2'>
+			<p>相关链接</p>
+			<a href="http://www.cumt.edu.cn/">中国矿业大学官网 </a>
+			<a href="http://art.cumt.edu.cn/">中国矿业大学建筑与设计学院官网 </a>
+			<a href=" https://share.mockplus.cn/go/FASDMXDCMB4JHQ5R/index.html">王康的个人网站</a>
+		</div>
+		<div id='footer3'>
+			<div>
+				<img src="{% static 'blog/under/qq群二维码.png' %}" alt="">
+				<span>溯源商品群</span>
+			</div>
+			<div>
+				<img src="{% static 'blog/under/公众号二维码.png' %}" alt="">
+				<span>溯源公众号</span>
+			</div>
+			<div>
+				<img src="{% static 'blog/under/游戏下载二维码.png' %}" alt="">
+				<span>手游下载</span>
+			</div>
+			
+		</div>
+	</footer>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src='{% static 'blog/js/game.js' %}'></script>
+</body>
+</html>

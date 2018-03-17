@@ -1,0 +1,148 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>溯源商城</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/shop.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/shutter.css' %}">
+
+
+	 <script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+    <style>
+        #main2{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+	<nav>
+		<img id='head-logo' src="{% static 'blog/nav/logo.png' %}" alt="logo">
+		<a id='shop' href="{% url 'shop'%}">溯源商城</a>
+		<a id='book' href="{% url 'book'%}">溯年书斋</a>
+		<a id='game' href="{% url 'game'%}">溯源游戏</a>
+		<a id='about' href="{% url 'about'%}">关于我们</a>
+		<div id='head-underline' class='underline'></div>
+		<img id='head-img1' src="{% static 'blog/nav/icon-gongzhonghao.png' %}" alt="">
+		<img id='head-img2' src="{% static 'blog/nav/icon-gamedownload.png' %}" alt="">
+		<div id="head-code1" >
+			<img src="{% static 'blog/nav/公众号二维码.png' %}" alt="">
+			<span>扫码关注公众号</span>
+		</div>
+		<div id="head-code2">
+			<img src="{% static 'blog/nav/游戏下载二维码.png' %}" alt="">
+			<span>扫码下载游戏</span>
+		</div>
+	</nav>
+	<main>
+		<div id='main0'>
+		<div class="shutter">
+			<div class="shutter-img">
+ 			 	<a href="#" data-shutter-title="Iron Man"><img src="{% static 'blog/images/shutter_1.jpg' %}" alt="#"></a>
+  				<a href="#" data-shutter-title="Super Man"><img src="{% static 'blog/images/shutter_2.jpg' %}" alt="#"></a>
+  				<a href="#" data-shutter-title="The Hulk"><img src="{% static 'blog/images/shutter_3.jpg' %}" alt="#"></a>
+			</div>
+			<ul class="shutter-btn">
+  				<li class="prev"></li>
+  				<li class="next"></li>
+			</ul>
+			<div class="shutter-desc">
+  				<p>Iron Man</p>
+			</div>
+		</div>
+		</div>
+		<div id='main3'>
+			<div id='main3-banner'>
+                <a href="{% url 'blog:shop'  %}"><span id='main3-h1'>全部</span></a>
+                <a href="{% url 'blog:archives' 0 %}"><span id='main3-h2'>礼品</span></a>
+                <a href="{% url 'blog:archives' 1 %}"><span id='main3-h3'>文具</span></a>
+				<a href="{% url 'blog:archives' 2 %}"><span id='main3-h4'>服饰</span></a>
+				<a href="{% url 'blog:archives' 3 %}"><span id='main3-h4'>其他</span></a>
+				<select id="selectID">
+                    <option  value="1">最新</option>
+                    <option value="2">最多赞</option>
+				</select>
+                            <form role="search" method="get" id="searchform" action="{% url 'blog:search_shop' %}">
+  <input id='main3-input' type="search" name="q" placeholder="搜索商品" required>
+  <button id='main3-btn' type="submit" value='搜索'></button>
+</form>
+			</div>
+		</div>
+
+		<div id='main2'>
+			<img src="{% static 'blog/bookImg/icon-biaoqian.png' %}" alt="">
+			<span id='main2-result'>"{{ q }}"相关商品&nbsp;共&nbsp;{{ num }}篇</span>
+			<a href="{% url 'shop'%}"><button id='main2-btn'>取消搜索</button></a>
+		</div>
+
+		<div id='contain'>
+           {% if error_msg %}
+    <p>{{ error_msg }}</p>
+            {% endif %}
+    {% for product in product_list %}
+		<a href="{{ product.get_absolute_url }}">
+			<div class='item'>
+				<div class="itemMask">
+					<img class='itemImg' src="{{ product.img_src.url }}" alt="">
+				</div>
+				<span class='itemName'>{{ product.name }}</span>
+				<span class='itemPrice'>{{ product.price }}</span>
+				<p class='itemDescription'>{{ product.excerpt }}</p>
+				<img class='articleLikeNumImg' src="{% static 'blog/shopImg/icon-dianzan.png' %}" alt="">
+				<span class='articleLikeNum'>{{ product.like_num }}</span>
+
+			</div>
+		</a>
+    {% endfor %}
+		<div id='mask'></div>
+		<div id='feedback-form'>
+			<form action="">
+			<div id='close'>X</div>
+			<h3>提交反馈</h3>
+			<span class='required'>必填</span>
+			<textarea name="" id="feedback-content" placeholder="告诉我们您遇到的问题或者建议"></textarea>
+			<span class='feedbackType'>反馈类型</span>
+			<label for="feedback-radio1">网站反馈&nbsp;&nbsp;<input name='feedback-radio' id='feedback-radio1' type="radio" checked></label>
+			<label for="feedback-radio2" >游戏反馈&nbsp;&nbsp;<input id='feedback-radio2' name='feedback-radio' type="radio"></label>
+			<span class='optional'>选填</span>
+			<input type="text" placeholder="称呼" id='feedback-name'>
+			<input type="text" placeholder="邮箱" id='feedback-email'>
+			<input type="submit" id='feedback-submit' value="提交">
+			</form>
+		</div>
+	</main>
+	<aside>
+		<div id='feedback'>反馈</div>
+		<div id='backup'></div>
+	</aside>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src='{% static 'blog/js/shop.js' %}'></script>
+	<script src="{% static 'blog/js/velocity.js' %}"></script>
+            <script src='{% static 'blog/js/shutter.js' %}'></script>
+<script>
+$(function () {
+  $('.shutter').shutter({
+	shutterW: 1000, // 容器宽度
+	shutterH: 358, // 容器高度
+	isAutoPlay: true, // 是否自动播放
+	playInterval: 3000, // 自动播放时间
+	curDisplay: 3, // 当前显示页
+	fullPage: false // 是否全屏展示
+  });
+});
+</script>
+</body>
+</html>

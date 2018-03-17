@@ -1,0 +1,118 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文章详情</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/detail.css' %}">
+	 <script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+</head>
+<body>
+	<nav>
+		<img id='head-logo' src="{% static 'blog/nav/logo.png' %}" alt="logo">
+		<a id='shop' href="{%url 'shop'%}">溯源商城</a>
+		<a id='book' href="{%url 'book'%}">溯年书斋</a>
+		<a id='game' href="{%url 'game'%}">溯源游戏</a>
+		<a id='about' href="{%url 'about'%}">关于我们</a>
+		<div id='head-underline' class='underline'></div>
+		<img id='head-img1' src="{% static 'blog/nav/icon-gongzhonghao.png' %}" alt="">
+		<img id='head-img2' src="{% static 'blog/nav/icon-gamedownload.png' %}" alt="">
+		<div id="head-code1" >
+			<img src="{% static 'blog/nav/公众号二维码.png' %}" alt="">
+			<span>扫码关注公众号</span>
+		</div>
+		<div id="head-code2">
+			<img src="{% static 'blog/nav/游戏下载二维码.png' %}" alt="">
+			<span>扫码下载游戏</span>
+		</div>
+	</nav>
+	<main>
+		<div id='main1'>
+			            <h2 id='main1-h2'>{{ post.title }}</h2>
+			            {% if post.type %}
+						    <span class='articleWay'>名家撰稿</span>
+                        {% else %}
+                            <span class='articleWay'>编辑推送</span>
+                        {% endif %}
+						<span class='articleTime'>{{ post.modified_time }}</span>
+						<span class='articleLikeNum'>{{ post.like_num }}</span>
+						<img class='articleLikeNumImg' src="{% static 'blog/bookImg/icon-like-black.png' %}" alt="">
+						<span class='articleViews'>{{ post.views }}</span>
+						<img class='articleViewsImg' src="{% static 'blog/bookImg/icon-see.png' %}" alt="">
+						<p id='main1-p'>{{ post.body|safe }}</p>
+        <form action="{{ post.get_like_url }}"><input id='main1-btn' type="submit" ></form>
+
+		</div>
+		<div id='main3'>
+			<div id='main3-banner'>
+				<span id='main3-h1'>文章推荐</span> 
+				<div class='underline1'></div>
+			</div>
+			<div id='show-list'>
+
+                 {% for recent_post in recent_posts %}
+   				<div class='articleSection'>
+					<div class='articleLeft'>
+						<img class='articleImg' src="{{ recent_post.img_src.url }}" alt="">
+					</div>
+					<div class='articleRight'>
+						<h3 class='articleHeadline'>{{ recent_post.title }}</h3>
+						<p class='articleBody'>{{ recent_post.body }}</p>
+                        {% if recent_post.type %}
+						    <span class='articleWay'>名家撰稿</span>
+                        {% else %}
+                            <span class='articleWay'>编辑推送</span>
+                        {% endif %}
+						<span class='articleTime'>{{ recent_post.modified_time }}</span>
+						<span class='articleLikeNum'>{{ recent_post.like_num }}</span>
+						<img class='articleLikeNumImg' src="{% static 'blog/bookImg/icon-like-black.png' %}" alt="">
+						
+						<span class='articleViews'>{{ recent_post.like_num }}</span>
+						<img class='articleViewsImg' src="{% static 'blog/bookImg/icon-see.png' %}" alt="">
+					</div>
+				</div>
+                 {% endfor %}
+			</div>
+		</div>
+
+
+		<div id='mask'></div>
+		<div id='feedback-form'>
+			<form action="">
+			<div id='close'>X</div>
+			<h3>提交反馈</h3>
+			<span class='required'>必填</span>
+			<textarea name="" id="feedback-content" placeholder="告诉我们您遇到的问题或者建议"></textarea>
+			<span class='feedbackType'>反馈类型</span>
+			<label for="feedback-radio1">网站反馈&nbsp;&nbsp;<input name='feedback-radio' id='feedback-radio1' type="radio" checked></label>
+			<label for="feedback-radio2" >游戏反馈&nbsp;&nbsp;<input id='feedback-radio2' name='feedback-radio' type="radio"></label>
+			<span class='optional'>选填</span>
+			<input type="text" placeholder="称呼" id='feedback-name'>
+			<input type="text" placeholder="邮箱" id='feedback-email'>
+			<input type="submit" id='feedback-submit' value="提交">
+			</form>
+			
+
+		</div>
+	</main>
+	<aside>
+		<div id='feedback'>反馈</div>
+		<div id='backup'></div>
+	</aside>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src='{% static 'blog/js/detail.js' %}'></script>
+</body>
+</html>

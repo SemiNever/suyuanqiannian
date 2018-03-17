@@ -1,0 +1,170 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关于我们</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/about.css' %}">
+
+	 <script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+</head>
+<body>
+	<nav>
+		<img id='head-logo' src="{% static 'blog/nav/logo.png' %}" alt="logo">
+		<a id='shop' href="{%url 'shop'%}">溯源商城</a>
+		<a id='book' href="{%url 'book'%}">溯年书斋</a>
+		<a id='game' href="{%url 'game'%}">溯源游戏</a>
+		<a id='about' href="{%url 'about'%}">关于我们</a>
+		<div id='head-underline' class='underline'></div>
+		<img id='head-img1' src="{% static 'blog/nav/icon-gongzhonghao.png' %}" alt="">
+		<img id='head-img2' src="{% static 'blog/nav/icon-gamedownload.png' %}" alt="">
+		<div id="head-code1" >
+			<img src="{% static 'blog/nav/公众号二维码.png ' %}" alt="">
+			<span>扫码关注公众号</span>
+		</div>
+		<div id="head-code2">
+			<img src="{% static 'blog/nav/游戏下载二维码.png' %}" alt="">
+			<span>扫码下载游戏</span>
+		</div>
+	</nav>
+	<main>
+		<div id='main1'>
+		<img id='hello' src="{% static 'blog/main/HELLO_.png' %}" alt="">
+		<h2>我们是中国矿业大学墨元团队</h2>
+		<p>国家级大学生创业训练计划</p>
+		<div class='underline1'></div>
+		<button id='contact-btn'>联系我们</button>
+		</div>
+
+		<div id='main2'>
+		<h2>项目简介</h2>
+		<div class='underline'></div>
+		<p>2015年国务院印发《国务院关于积极推进“互联网+”行动的指导意见》，积极推动利用信息通信技术以及互联网平台创造新的发展生态。信息时代网络技术与多种行业结合产生了新的变化，也为文化产业的发展带来全新契机。中华传统文化是中国数千年沉淀下来的精华，在世界文化中独具一格，传承传统文化让文化产业的发展更加多元化。因此，本项目以“互联网+传统文化”为理念支撑，充分利用互联网的力量，实现优秀传统文化传播的社会效益和经济利益。项目由具有清晰的世界观，多重系统，多样玩法，小目标渐进，完善的经济系统与游戏周边，深厚的文化底蕴的手游《溯源千年》，周边商品展示网站，汉字文化文章推送网站，线上交流与商品售卖平台，以及配套的配送，约稿，设计，反馈，制作等组成。</p>
+		</div>
+
+		<div id='main3'>
+			<h2>项目特色</h2>
+			<div class='underline'></div>
+			<div id='main3-group1' class='main3Group'>
+			<img src="{% static 'blog/main/logo-1.png' %}" alt="">
+			<h3>溯源手游畅玩</h3>
+			<span>穿越至中国文化起点，经历24个典型关卡，体会中国文明的脉络。</span>
+			</div>
+			<div  class='main3Group'>
+				<img src="{% static 'blog/main/logo-2.png' %}" alt="">
+				<h3>精美文章推送</h3>
+				<span>每周推送关于汉字的文章，编辑推荐，名家约稿，让用户领略中国传统文化。</span>
+			</div>
+			<div class='main3Group'>
+				<img src="{% static 'blog/main/logo-3.png' %}" alt="">
+				<h3>周边商品购买</h3>
+				<span>展示游戏周边产品及其设计说明，引导流量转化，实现盈利。</span>
+			</div>
+			<div class='main3Group'>
+			<img src="{% static 'blog/main/logo-4.png' %}" alt="">
+			<h3>线上交流社区</h3>
+			<span>为爱好传统文化的青年提供一个线上交流平台，并作为周边商品销售渠道。</span>
+			</div>
+			
+		</div>
+		<div id='main4'>
+			<h2>项目成员</h2>
+			<div class='underline'></div>
+			<div id='left'><</div>
+			<img id='memeber-img' src="{% static 'blog/main/touxiang-wk.png' %}" alt="">
+			<p id='memeber-name'>王康</p>
+			<p id='memeber-position'>产品经理</p>
+			<p id='memeber-introduction'>工业设计14级，整合创新工作室，中共预备党员</p>
+			<p id='memeber-effect'>负责整体把控项目进度，需求分析与功能设计</p>
+			<div class="checked"></div>
+			<div class="cricle"></div>
+			<div class="cricle"></div>
+			<div class="cricle"></div>
+			<div class="cricle"></div>
+			<div class="cricle"></div>
+			<div id='right'>></div>
+		</div>
+
+		<div id='main5'>
+			<h2>前导项目展示</h2>
+			<div class="underline"></div>
+			<video src="{% static 'blog/main/字墨消除.webm' %}" controls="controls">
+		</div>
+		<div id='main6'>
+			<h2>联系我们</h2>
+			<div class='underline'></div>
+			<form action="">
+				<input type="text" placeholder="称呼" name='name' id='main6-name'>
+				<input type="text" placeholder="邮箱" name='email' id='main6-email'>
+				<textarea name="content" id="" placeholder="内容" maxlength="500" ></textarea>
+				<input type="submit" value="发送" id='main6-sumbit'>
+			</form>
+		</div>
+		<div id='mask'></div>
+		<div id='feedback-form'>
+			<form action="/feedback/" method="post" >
+                {% csrf_token %}
+			<div id='close'>X</div>
+			<h3>提交反馈</h3>
+			<span class='required'>必填</span>
+			<textarea name="content" id="feedback-content" placeholder="告诉我们您遇到的问题或者建议"></textarea>
+			<span class='feedbackType'>反馈类型</span>
+			<label for="feedback-radio1">网站反馈&nbsp;&nbsp;<input value="0" name='feedback-radio' id='feedback-radio1' type="radio"  checked></label>
+			<label for="feedback-radio2" >游戏反馈&nbsp;&nbsp;<input value="1" id='feedback-radio2' name='feedback-radio' type="radio"></label>
+			<span class='optional'>选填</span>
+			<input type="text" name="name" placeholder="称呼" id='feedback-name'>
+			<input type="text" name="contact" placeholder="邮箱" id='feedback-email'>
+			<input type="submit" id='feedback-submit' value="提交">
+			</form>
+		</div>
+	</main>
+	<aside>
+		<div id='feedback'>反馈</div>
+		<div id='backup'></div>
+	</aside>
+	<footer>
+		<div id='footer1'>
+			<p id='footer10'>联系我们</p>
+			<div id='footer11'>中国矿业大学建筑与设计学院整合创新工作室</div>
+			<div id='footer12'>409460109@qq.com</div>
+			<div id='footer13'>18361226228</div>
+		</div>
+		<div id='footer2'>
+			<p>相关链接</p>
+			<a href="http://www.cumt.edu.cn/">中国矿业大学官网 </a>
+			<a href="http://art.cumt.edu.cn/">中国矿业大学建筑与设计学院官网 </a>
+			<a href=" https://share.mockplus.cn/go/FASDMXDCMB4JHQ5R/index.html">王康的个人网站</a>
+		</div>
+		<div id='footer3'>
+			<div>
+				<img src="{% static 'blog/under/qq群二维码.png' %}" alt="">
+				<span>溯源商品群</span>
+			</div>
+			<div>
+				<img src="{% static 'blog/under/公众号二维码.png' %}" alt="">
+				<span>溯源公众号</span>
+			</div>
+			<div>
+				<img src="{% static 'blog/under/游戏下载二维码.png' %}" alt="">
+				<span>手游下载</span>
+			</div>
+			
+		</div>
+	</footer>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src='{% static 'blog/js/about.js' %}'></script>
+</body>
+</html>

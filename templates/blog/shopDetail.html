@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+    	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/shopDetail.css' %}">
+	 <script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+</head>
+<body>
+	<nav>
+		<img id='head-logo' src="{% static 'blog/nav/logo.png' %}" alt="logo">
+		<a id='shop' href="{%url 'shop'%}">溯源商城</a>
+		<a id='book' href="{%url 'book'%}">溯年书斋</a>
+		<a id='game' href="{%url 'game'%}">溯源游戏</a>
+		<a id='about' href="{%url 'about'%}">关于我们</a>
+		<div id='head-underline' class='underline'></div>
+		<img id='head-img1' src="{% static 'blog/nav/icon-gongzhonghao.png' %}" alt="">
+		<img id='head-img2' src="{% static 'blog/nav/icon-gamedownload.png' %}" alt="">
+		<div id="head-code1" >
+			<img src="{% static 'blog/nav/公众号二维码.png' %}" alt="">
+			<span>扫码关注公众号</span>
+		</div>
+		<div id="head-code2">
+			<img src="{% static 'blog/nav/游戏下载二维码.png' %}" alt="">
+			<span>扫码下载游戏</span>
+		</div>
+	</nav>
+
+	<main>
+		<div id='main0'>
+		<div id='main0-left'>
+			<img class='main0Img' src="{{ product.product_src1.url }}" alt="">
+			<img class='main0Img' src="{{ product.product_src2.url }}" alt="">
+			<img class='main0Img' src="{{ product.product_src3.url }}" alt="">
+			<div class='imgFooter'>
+				<div class="cricle checked"></div>
+				<div class="cricle "></div>
+				<div class="cricle "></div>
+			</div>
+			
+		</div>
+		<div id='main0-right'>
+			<h2 id='product-name'>{{ product.name }}</h2>
+			<p id='product-description'>{{ product.excerpt }}</p>
+			<div id='product-underline'></div>
+			<p id='product-price'>{{ product.price }}</p>
+			<p id='product-norm'>{{ product.size }}</p>
+		</div>
+		</div>	
+		
+
+		<div id='main1'>
+			<div id='main1-headline'>{{ product.name }}</div>
+			<p>{{ product.body|safe }}</p>
+			<img id='main1-img' src="{{ product.img_src.url }}" alt="">
+            <form action="{{ product.get_like_url }}"><input id='main1-btn1' type="submit" value="点赞"></form>
+			<input id='main1-btn2' type="button" value="购买">
+		</div>
+		<div id='mask'></div>
+		<div id='main2'>
+		<div id='main2-headline'>
+			<p>加群购买该产品</p>
+			<img id='cancel' src="{% static 'blog/shopImg/icon-cancel.png' %}" alt="">
+		</div>
+			
+		<img id='qq-group' src="{% static 'blog/shopImg/icon-qqqun.png' %}" alt="">
+		<p id='qq-number'>QQ群&nbsp;:&nbsp;692055085</p>
+		</div>
+	</main>
+
+	<aside>
+		<a href="{{ product.get_previous_url }}"><div id='left'></div></a>
+		<a href="{{ product.get_next_url }}"><div id='right'></div></a>
+	</aside>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src='{% static 'blog/js/shopDetail.js' %}'></script>
+</body>
+</html>

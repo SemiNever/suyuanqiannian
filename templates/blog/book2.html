@@ -1,0 +1,125 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>溯源书斋</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/book.css' %}">
+	 <script>
+	 	(function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+
+		})()
+		window.onresize=function(){
+			var  html = document.documentElement;
+			var htmlWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = htmlWidth/15 +'px';
+		}
+	 </script>
+        <style>
+        .underline1{
+            left:7rem;
+        }
+    </style>
+</head>
+<body>
+	<nav>
+		<img id='head-logo' src="{% static 'blog/nav/logo.png' %}" alt="logo">
+		<a id='shop' href="{%url 'shop'%}">溯源商城</a>
+		<a id='book' href="{%url 'book'%}">溯年书斋</a>
+		<a id='game' href="{%url 'game'%}">溯源游戏</a>
+		<a id='about' href="{%url 'about'%}">关于我们</a>
+		<div id='head-underline' class='underline'></div>
+		<img id='head-img1' src="{% static 'blog/nav/icon-gongzhonghao.png' %}" alt="">
+		<img id='head-img2' src="{% static 'blog/nav/icon-gamedownload.png' %}" alt="">
+		<div id="head-code1" >
+			<img src="{% static 'blog/nav/公众号二维码.png ' %}" alt="">
+			<span>扫码关注公众号</span>
+		</div>
+		<div id="head-code2">
+			<img src="{% static 'blog/nav/游戏下载二维码.png' %}" alt="">
+			<span>扫码下载游戏</span>
+		</div>
+	</nav>
+	<main>
+		<div id='main1'>
+            <form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+  <input id='main1-search' type="search" name="q" placeholder="搜索文章名" required>
+  <button id='main1-btn' type="submit" value='搜索'>搜索</button>
+</form>
+		</div>
+		<div id='main2'>
+			<img src="{% static 'blog/bookImg/icon-biaoqian.png' %}" alt="">
+			<span id='main2-result'>"{{ q }}"相关文章&nbsp;共&nbsp;{{ num }}篇</span>
+            <a href="{%url 'book'%}"><button id='main2-btn'>取消搜索</button></a>
+		</div>
+		<div id='main3'>
+			<div id='main3-banner'>
+                <a href="{% url 'blog:book'  %}"><span id='main3-h1'>全部文章</span></a>
+                <a href="{% url 'blog:divide' 0 %}"><span id='main3-h2'>编辑推送</span></a>
+                <a href="{% url 'blog:divide' 1 %}"><span id='main3-h3'>名家约稿</span></a>
+				<div class='underline1'></div>
+				<select>
+ 				<option value="最新文章">最新文章</option>
+ 				<option value="还有啥">还有啥</option>
+				</select>
+			</div>
+			<div id='show-list'>
+            {% for post in post_list %}
+                <a href="{{ post.get_absolute_url }}">
+				<div class='articleSection'>
+					<div class='articleLeft'>
+						<img class='articleImg' src="{{ post.img_src.url }}" alt="">
+					</div>
+					<div class='articleRight'>
+						<h3 class='articleHeadline'>{{ post.title }}</h3>
+						<p class='articleBody'>{{ post.body|safe }}</p>
+						{% if post.type %}
+						    <span class='articleWay'>名家撰稿</span>
+                        {% else %}
+                            <span class='articleWay'>编辑推送</span>
+                        {% endif %}
+						<span class='articleTime'>{{ post.modified_time }}</span>
+
+						<span class='articleLikeNum'>{{ post.like_num }}</span>
+						<img class='articleLikeNumImg' src="{% static 'blog/bookImg/icon-like-black.png' %}" alt="">
+
+						<span class='articleViews'>{{ post.views }}</span>
+						<img class='articleViewsImg' src="{% static 'blog/bookImg/icon-see.png' %}" alt="">
+					</div>
+				</div>
+				</a>
+            {% endfor %}
+		</div>
+
+
+		<div id='mask'></div>
+		<div id='feedback-form'>
+			<form action="/feedback/" method="post" >
+                {% csrf_token %}
+			<div id='close'>X</div>
+			<h3>提交反馈</h3>
+			<span class='required'>必填</span>
+			<textarea name="content" id="feedback-content" placeholder="告诉我们您遇到的问题或者建议"></textarea>
+			<span class='feedbackType'>反馈类型</span>
+			<label for="feedback-radio1">网站反馈&nbsp;&nbsp;<input value="0" name='feedback-radio' id='feedback-radio1' type="radio" checked></label>
+			<label for="feedback-radio2" >游戏反馈&nbsp;&nbsp;<input value="1" id='feedback-radio2' name='feedback-radio' type="radio" ></label>
+			<span class='optional'>选填</span>
+			<input type="text" name="name" placeholder="称呼" id='feedback-name'>
+			<input type="text" name="contact" placeholder="邮箱" id='feedback-email'>
+			<input type="submit" id='feedback-submit' value="提交">
+			</form>
+		</div>
+	</main>
+	<aside>
+		<div id='feedback'>反馈</div>
+		<div id='backup'></div>
+	</aside>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src='{% static 'blog/js/book.js' %}'></script>
+</body>
+</html>
