@@ -390,7 +390,7 @@ main {
   left: 3.62rem;
   top: 6.06rem;
   text-align: left;
-  display: inline-block;
+    display: none;
 }
 #main1 {
   width: 7.8125rem;

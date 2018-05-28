@@ -350,8 +350,9 @@ main {
 }
 #main0 {
   width: 100%;
-  padding-top: 0.078125rem;
+  padding-top: 0.028125rem;
   padding-bottom: 0.078125rem;
+  height:520px;
 }
 #contain {
   display: -webkit-flex;
@@ -434,7 +435,6 @@ main {
         .articleLikeNum{    
             font-size: 0.140625rem;
             color: red;
-
             display: none;
         }
         #searchform{
