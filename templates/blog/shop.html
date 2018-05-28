@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/reset.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/shop.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/shutter.css' %}">
-
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
 
 	 <script>
 	 	(function(){
@@ -44,20 +44,18 @@
 	</nav>
     <main>
 		<div id='main0'>
-		<div class="shutter">
-			<div class="shutter-img">
- 			 	<a href="#" data-shutter-title="Iron Man"><img src="{% static 'blog/images/shutter_1.jpg' %}" alt="#"></a>
-  				<a href="#" data-shutter-title="Super Man"><img src="{% static 'blog/images/shutter_2.jpg' %}" alt="#"></a>
-  				<a href="#" data-shutter-title="The Hulk"><img src="{% static 'blog/images/shutter_3.jpg' %}" alt="#"></a>
-			</div>
-			<ul class="shutter-btn">
-  				<li class="prev"></li>
-  				<li class="next"></li>
-			</ul>
-			<div class="shutter-desc">
-  				<p>Iron Man</p>
-			</div>
-		</div>
+            	<div class='o-sliderContainer hasShadow ' id="pbSliderWrap3">
+  <div class='o-slider' id='pbSlider3'>
+    <div class="o-slider--item" data-image="{% static 'blog/images/1.jpg' %}">
+    </div>
+    <div class="o-slider--item" data-image="{% static 'blog/images/2.jpg' %}">
+    </div>
+    <div class="o-slider--item" data-image="{% static 'blog/images/3.jpg' %}">
+    </div>
+    <div class="o-slider--item" data-image="{% static 'blog/images/4.jpg' %}">
+    </div>
+  </div>
+</div>
 		</div>
 		<div id='main3'>
 			<div id='main3-banner'>
@@ -124,19 +122,28 @@
 	</aside>
 	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 	<script src='{% static 'blog/js/shop.js' %}'></script>
-	<script src="{% static 'blog/js/velocity.js' %}"></script>
-            <script src='{% static 'blog/js/shutter.js' %}'></script>
-<script>
-$(function () {
-  $('.shutter').shutter({
-	shutterW: 1000, // 容器宽度
-	shutterH: 358, // 容器高度
-	isAutoPlay: true, // 是否自动播放
-	playInterval: 3000, // 自动播放时间
-	curDisplay: 3, // 当前显示页
-	fullPage: false // 是否全屏展示
-  });
-});
-</script>
+    <script src='{% static 'blog/js/hammer.min.js' %}'></script>
+    <script src='{% static 'blog/js/slider.js' %}'></script>
+	<script>
+		$('#pbSlider3').pbTouchSlider({
+		slider_Wrap: '#pbSliderWrap3',
+		slider_Threshold: 50 ,
+		slider_Speed:400 ,
+		slider_Ease:'linear',
+		slider_Breakpoints: {
+		    default: {
+		        height: 520
+		    },
+		    tablet: {
+		        height: 300,
+		        media: 1024
+		    },
+		    smartphone: {
+		        height: 200,
+		        media: 768
+		    }
+		}
+		});
+		</script>
 </body>
 </html>
